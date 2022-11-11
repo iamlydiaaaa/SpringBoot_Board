@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+</head>
+<body>
+<main>
+        <div class="sec_tit">
+            <span>궁금한 내용을 남겨주세요.</span>
+            <h2>Q&amp;A</h2>
+        </div>
+        <section id="board_list">
+            <div class="list_total">
+                <p>총 <strong>0</strong>건</p>
+                <p><a class="btn_default" th:href="insertBoard">글쓰기</a></p>
+            </div>
+            <div class="list_table">
+                <table id="tbBox">
+                   <colgroup>
+                       <col class="col2" width="120px">
+                       <col class="col3" width="*">
+                       <col class="col4" width="140px">
+                       <col class="col5" width="160px">
+                       <col class="col6" width="160px">
+                   </colgroup>
+                   <tbody>
+                        <tr th:each="board : ${boardList }">
+                        	<td id="tbNum"><span th:text="${board.seq }"></span></td>
+                            <td id="tbTit"><a href="@{/getBoard(seq=${board.seq })}" th:text="${board.title }"></a></td>
+                            <td id="tbName"><span th:text="${board.writer }"></span></td>
+                            <td id="tbDate"><span th:text="${board.createDate }"></span></td>
+                            <td id="tbStatus"><span class="comment">답변완료</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td id="tbNum">1</td>
+                            <td id="tbTit">제목제목제목제목</td>
+                            <td id="tbName">김*경</td>
+                            <td id="tbDate">2022.11.03</td>
+                            <td id="tbStatus"><span>답변대기</span></td>
+                        </tr>
+                        <tr>
+                            <td id="tbNum">1</td>
+                            <td id="tbTit">제목제목제목제목</td>
+                            <td id="tbName">김*경</td>
+                            <td id="tbDate">2022.11.03</td>
+                            <td id="tbStatus"><span>답변대기</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="list_num">
+                <ul>
+                    <li class="l_prev"><a href="#">Prev</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li class="l_next"><a href="#">Next</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
